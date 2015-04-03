@@ -19,7 +19,9 @@ def home():
 @app.route('/new', methods=['POST'])
 def new():
     text = flask.request.form['message']
-    print text
+    message = Message(text=text)
+    db.session.add(message)
+    db.session.commit()
     return flask.redirect(flask.url_for('home'))
 
 
