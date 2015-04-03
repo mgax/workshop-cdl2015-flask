@@ -1,5 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="/static/style.css">
 
 <body>
 
@@ -23,6 +24,6 @@
 {% endfor %}
 
 <form class="new-form" method="POST" action="/new">
-  <input name="message">
+  <input name="message" placeholder="new message">
   <button type="submit">save</button>
 </form>
