@@ -33,9 +33,16 @@ def message_view(message_id):
     return flask.render_template('message.html', message=message)
 
 
-@app.route('/message/<int:message_id>/delete')
+@app.route('/message/<int:message_id>/delete', methods=['GET', 'POST'])
 def message_delete(message_id):
     message = Message.query.get_or_404(message_id)
+
+    if flask.request.method == 'POST':
+        db.session.delete(message)
+        db.session.commit()
+        flask.flash("Message '%s' deleted" % message.text)
+        return flask.redirect(flask.url_for('home'))
+
     return flask.render_template('delete.html', message=message)
 
 
