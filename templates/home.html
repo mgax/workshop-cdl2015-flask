@@ -3,6 +3,10 @@
 
 <body>
 
+{% for text in get_flashed_messages() %}
+  <p>{{ text }}</p>
+{% endfor %}
+
 <h1>Messages!</h1>
 
 {% for message in messages %}

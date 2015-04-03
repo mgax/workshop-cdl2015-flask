@@ -23,6 +23,7 @@ def new():
     message = Message(text=text)
     db.session.add(message)
     db.session.commit()
+    flask.flash("Message '%s' saved" % text)
     return flask.redirect(flask.url_for('home'))
 
 
