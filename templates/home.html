@@ -9,6 +9,11 @@
 
 <h1>Messages!</h1>
 
+<form>
+  <input type="search" name="q" placeholder="search text ..." value="{{ q }}">
+  <button type="submit">search</button>
+</form>
+
 {% for message in messages %}
   <p class="message">
     <a href="{{ url_for('message_view', message_id=message.id) }}">

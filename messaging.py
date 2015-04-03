@@ -13,8 +13,13 @@ class Message(db.Model):
 
 @app.route('/')
 def home():
-    messages = Message.query.all()
-    return flask.render_template('home.html', messages=messages)
+    q = flask.request.args.get('q', '')
+    if q:
+        messages = Message.query.filter(Message.text.like('%' + q + '%')).all()
+    else:
+        messages = Message.query.all()
+
+    return flask.render_template('home.html', messages=messages, q=q)
 
 
 @app.route('/new', methods=['POST'])
