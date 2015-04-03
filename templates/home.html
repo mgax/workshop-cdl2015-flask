@@ -5,6 +5,12 @@
 
 <h1>Messages!</h1>
 
+{% for message in messages %}
+  <p class="message">
+    {{ message.text }}
+  </p>
+{% endfor %}
+
 <form class="new-form" method="POST" action="/new">
   <input name="message">
   <button type="submit">save</button>

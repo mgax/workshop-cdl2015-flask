@@ -13,7 +13,8 @@ class Message(db.Model):
 
 @app.route('/')
 def home():
-    return flask.render_template('home.html')
+    messages = Message.query.all()
+    return flask.render_template('home.html', messages=messages)
 
 
 @app.route('/new', methods=['POST'])
