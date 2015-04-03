@@ -11,7 +11,9 @@
 
 {% for message in messages %}
   <p class="message">
-    {{ message.text }}
+    <a href="{{ url_for('message_view', message_id=message.id) }}">
+      {{ message.text|truncate(10) }}
+    </a>
   </p>
 {% endfor %}
 
