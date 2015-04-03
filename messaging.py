@@ -33,5 +33,11 @@ def message_view(message_id):
     return flask.render_template('message.html', message=message)
 
 
+@app.route('/message/<int:message_id>/delete')
+def message_delete(message_id):
+    message = Message.query.get_or_404(message_id)
+    return flask.render_template('delete.html', message=message)
+
+
 db.create_all()
 app.run(debug=True)

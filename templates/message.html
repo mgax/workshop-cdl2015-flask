@@ -8,3 +8,5 @@
 <p>{{ message.text }}</p>
 
 <a href="/">back</a>
+
+<a href="{{ url_for('.message_delete', message_id=message.id) }}">delete</a>
