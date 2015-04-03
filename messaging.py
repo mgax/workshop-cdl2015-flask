@@ -1,7 +1,14 @@
 import flask
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = flask.Flask(__name__)
 app.config.from_pyfile('settings.py')
+db = SQLAlchemy(app)
+
+
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String)
 
 
 @app.route('/')
@@ -16,4 +23,5 @@ def new():
     return flask.redirect(flask.url_for('home'))
 
 
+db.create_all()
 app.run(debug=True)
